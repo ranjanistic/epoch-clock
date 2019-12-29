@@ -36,6 +36,7 @@ class AnalogClock extends StatefulWidget {
   _AnalogClockState createState() => _AnalogClockState();
 }
 
+
 class _AnalogClockState extends State<AnalogClock> {
   var _now = DateTime.now();
   var _temperature = '';
@@ -43,6 +44,7 @@ class _AnalogClockState extends State<AnalogClock> {
   var _condition = '';
   var _location = '';
   Timer _timer;
+
 
   @override
   void initState() {
@@ -92,31 +94,27 @@ class _AnalogClockState extends State<AnalogClock> {
   Widget build(BuildContext context) {
     final customTheme = Theme.of(context).brightness == Brightness.light
         ? Theme.of(context).copyWith(
-            // Hour hand.
-            primaryColor: Color.fromARGB(245, 125, 205, 205),
-            // Minute hand.
-            highlightColor: Color.fromARGB(255, 180, 145, 175),
-            // Second hand.
-            accentColor: Color.fromARGB(255, 225, 125, 165),
-            backgroundColor: Color.fromARGB(255, 25, 105, 255),
+            primaryColor: Color.fromARGB(255, 244, 200, 200),
+            highlightColor: Color.fromARGB(255, 180, 155, 235),
+            accentColor: Color.fromARGB(255, 252, 133, 120),
+            backgroundColor: Color.fromARGB(205, 25, 15, 75),
           )
         : Theme.of(context).copyWith(
-            primaryColor: Color.fromARGB(245, 125, 155, 195),
-            highlightColor: Color.fromARGB(255, 200, 225, 205),
+            primaryColor: Color.fromARGB(245, 15, 155, 165),
+            highlightColor: Color.fromARGB(255, 220, 122, 125),
             accentColor: Color.fromARGB(255, 225, 105, 125),
-            backgroundColor: Color.fromARGB(255, 32, 35, 255),
+            backgroundColor: Color.fromARGB(155, 32, 35, 115),
           );
     final time = DateFormat.Hms().format(DateTime.now());
     final weatherInfo = DefaultTextStyle(
       style: TextStyle(
-          color: Color.fromARGB(255, 150, 180, 190),
-          fontFamily: "Raleway",
-          fontSize: 18),
+          color: Color.fromARGB(255, 180, 190, 200),
+          fontFamily: "QuickSand",
+          fontSize: 22),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(_temperature),
-          Text(_temperatureRange),
           Text(_condition),
           Text(_location),
         ],
@@ -129,12 +127,12 @@ class _AnalogClockState extends State<AnalogClock> {
         value: time,
       ),
       child: Container(
-        color: Color.fromARGB(200, 30, 30, 120),
+        color: customTheme.backgroundColor,
         child: Stack(
           children: [
             ContainerHand(
               color: Colors.transparent,
-              size: 0.8,
+              size: 0.9,
               angleRadians: _now.minute * radiansPerTick,
               child: Transform.translate(
                 offset: Offset(0.0, -100.0),
@@ -143,29 +141,40 @@ class _AnalogClockState extends State<AnalogClock> {
                   height: 150,
                   decoration: BoxDecoration(
                     color: customTheme.highlightColor,
+                    borderRadius: BorderRadius.circular(13),
                   ),
                 ),
               ),
             ), //Minute hand
-            DrawnHand(
-              color: customTheme.primaryColor,
-              thickness: 16,
-              size: 0.3,
-              angleRadians: _now.hour * radiansPerHour +
-                  (_now.minute / 60) * radiansPerHour,
-            ), // Hour hand
-
             ContainerHand(
               color: Colors.transparent,
               size: 0.8,
+              angleRadians: _now.hour * radiansPerHour +
+                  (_now.minute / 60) * radiansPerHour,
+              child: Transform.translate(
+                offset: Offset(0.0, -80.0),
+                child: Container(
+                  width: 12,
+                  height: 80,
+                  decoration: BoxDecoration(
+                    color: customTheme.primaryColor,
+                    borderRadius: BorderRadius.circular(13),
+                  ),
+                ),
+              ),
+            ),
+            ContainerHand(
+              color: Colors.transparent,
+              size: 1,
               angleRadians: _now.second * radiansPerTick,
               child: Transform.translate(
-                offset: Offset(0.0, -200.0),
+                offset: Offset(0.0, -180.0),
                 child: Container(
-                  width: 8,
-                  height: 40,
+                  width: 25,
+                  height: 25,
                   decoration: BoxDecoration(
                     color: customTheme.accentColor,
+                    borderRadius: BorderRadius.circular(15),
                   ),
                 ),
               ),

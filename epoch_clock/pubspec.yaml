@@ -23,5 +23,9 @@ flutter:
       fonts:
         - asset: assets/Raleway-Black.ttf
           weight: 100
+    - family: Quicksand
+      fonts:
+        - asset: assets/Quicksand-SemiBold.ttf
+          weight: 200
   assets:
     - assets/
