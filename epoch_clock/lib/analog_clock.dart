@@ -3,14 +3,14 @@
 // found in the LICENSE file.
 
 import 'dart:async';
-import 'dart:ui';
+import 'package:flutter_web_ui/ui.dart';
 
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_web/painting.dart' as paint;
+import 'package:flutter_web/rendering.dart';
+import 'package:flutter_web/widgets.dart';
 import 'package:flutter_clock_helper/model.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/semantics.dart';
+import 'package:flutter_web/material.dart';
+import 'package:flutter_web/semantics.dart';
 import 'package:intl/intl.dart';
 import 'package:vector_math/vector_math_64.dart' show radians;
 
@@ -107,7 +107,7 @@ class _AnalogClockState extends State<AnalogClock> {
           );
     final time = DateFormat.Hms().format(DateTime.now());
     final weatherInfo = DefaultTextStyle(
-      style: TextStyle(
+      style: paint.TextStyle(
           color: Color.fromARGB(255, 180, 190, 200),
           fontFamily: "QuickSand",
           fontSize: 22),

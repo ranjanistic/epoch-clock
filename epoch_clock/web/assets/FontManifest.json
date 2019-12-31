@@ -1,0 +1,19 @@
+[
+    {
+      "family": "Raleway",
+      "fonts": [
+        {
+          "asset": "fonts/Raleway-Black.ttf"
+        }
+      ]
+    },
+    {
+      "family": "QuickSand",
+      "fonts": [
+        {
+          "asset": "fonts/Quicksand-SemiBold.ttf",
+          "weight": 200
+        }
+      ]
+    }
+  ]
