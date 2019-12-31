@@ -1,0 +1,5 @@
+
+epoch_clock/ios/Flutter/flutter_export_environment.sh
+*.xcconfig
+epoch_clock/ios/Runner/GeneratedPluginRegistrant.h
+*.m
